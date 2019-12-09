@@ -29,7 +29,7 @@ import java.io.Serializable;
  * @author Juergen Hoeller
  */
 @MappedSuperclass
-public class VetsBaseEntity implements Serializable {
+class VetsBaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

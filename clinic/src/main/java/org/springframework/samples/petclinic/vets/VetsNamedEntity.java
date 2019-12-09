@@ -28,7 +28,7 @@ import javax.persistence.MappedSuperclass;
  * @author Juergen Hoeller
  */
 @MappedSuperclass
-public class VetsNamedEntity extends VetsBaseEntity {
+class VetsNamedEntity extends VetsBaseEntity {
 
     @Column(name = "name")
     private String name;

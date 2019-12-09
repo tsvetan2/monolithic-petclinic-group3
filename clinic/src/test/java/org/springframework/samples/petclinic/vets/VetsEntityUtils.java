@@ -17,7 +17,6 @@
 package org.springframework.samples.petclinic.vets;
 
 import org.springframework.orm.ObjectRetrievalFailureException;
-import org.springframework.samples.petclinic.model.BaseEntity;
 
 import java.util.Collection;
 
@@ -27,7 +26,7 @@ import java.util.Collection;
  *
  * @author Juergen Hoeller
  * @author Sam Brannen
- * @see BaseEntity
+ * @see VetsBaseEntity
  * @since 29.10.2003
  */
 public abstract class VetsEntityUtils {
