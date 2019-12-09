@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.controller;
 
+import org.springframework.samples.petclinic.service.VetDto;
 import org.springframework.samples.petclinic.vets.Vet;
 
 import java.util.ArrayList;
@@ -32,10 +33,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Vets {
 
-    private List<Vet> vets;
+    private List<VetDto> vets;
 
     @XmlElement
-    public List<Vet> getVetList() {
+    public List<VetDto> getVetList() {
         if (vets == null) {
             vets = new ArrayList<>();
         }

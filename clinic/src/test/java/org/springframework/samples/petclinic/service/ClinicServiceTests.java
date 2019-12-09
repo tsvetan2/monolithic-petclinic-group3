@@ -169,13 +169,12 @@ class ClinicServiceTests {
 
     @Test
     void shouldFindVets() {
-        Collection<Vet> vets = service.allVets();
+        Collection<VetDto> vets = service.allVets();
 
-        Vet vet = VetsEntityUtils.getById(vets, Vet.class, 3);
-        assertThat(vet.getLastName()).isEqualTo("Douglas");
-        assertThat(vet.getNrOfSpecialties()).isEqualTo(2);
-        assertThat(vet.getSpecialties().get(0).getName()).isEqualTo("dentistry");
-        assertThat(vet.getSpecialties().get(1).getName()).isEqualTo("surgery");
+        VetDto vet = vets.stream().filter(v -> v.lastName.equals("Douglas")).findFirst().get();
+        assertThat(vet.lastName).isEqualTo("Douglas");
+        assertThat(vet.specialties.get(0)).isEqualTo("dentistry");
+        assertThat(vet.specialties.get(1)).isEqualTo("surgery");
     }
 
     @Test
