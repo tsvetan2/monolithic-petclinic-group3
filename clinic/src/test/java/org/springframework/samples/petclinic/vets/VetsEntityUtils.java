@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic.service;
-
-import java.util.Collection;
+package org.springframework.samples.petclinic.vets;
 
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.samples.petclinic.model.BaseEntity;
-import org.springframework.samples.petclinic.vets.VetsBaseEntity;
+
+import java.util.Collection;
 
 /**
  * Utility methods for handling entities. Separate from the BaseEntity class mainly because of dependency on the
@@ -28,10 +27,10 @@ import org.springframework.samples.petclinic.vets.VetsBaseEntity;
  *
  * @author Juergen Hoeller
  * @author Sam Brannen
- * @see org.springframework.samples.petclinic.model.BaseEntity
+ * @see BaseEntity
  * @since 29.10.2003
  */
-public abstract class EntityUtils {
+public abstract class VetsEntityUtils {
 
     /**
      * Look up the entity of the given class with the given id in the given collection.
@@ -42,7 +41,7 @@ public abstract class EntityUtils {
      * @return the found entity
      * @throws ObjectRetrievalFailureException if the entity was not found
      */
-    public static <T extends BaseEntity> T getById(Collection<T> entities, Class<T> entityClass, int entityId)
+    public static <T extends VetsBaseEntity> T getById(Collection<T> entities, Class<T> entityClass, int entityId)
         throws ObjectRetrievalFailureException {
         for (T entity : entities) {
             if (entity.getId() == entityId && entityClass.isInstance(entity)) {

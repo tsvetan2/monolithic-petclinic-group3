@@ -15,9 +15,6 @@
  */
 package org.springframework.samples.petclinic.vets;
 
-import org.springframework.samples.petclinic.model.NamedEntity;
-import org.springframework.samples.petclinic.model.Vet;
-
 import java.io.Serializable;
 
 import javax.persistence.Entity;
