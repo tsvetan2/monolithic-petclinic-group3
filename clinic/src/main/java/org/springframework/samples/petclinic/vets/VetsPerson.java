@@ -15,8 +15,6 @@
  */
 package org.springframework.samples.petclinic.vets;
 
-import org.springframework.samples.petclinic.model.BaseEntity;
-
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotEmpty;

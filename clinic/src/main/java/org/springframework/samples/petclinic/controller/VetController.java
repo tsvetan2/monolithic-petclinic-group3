@@ -15,7 +15,6 @@
  */
 package org.springframework.samples.petclinic.controller;
 
-import org.springframework.samples.petclinic.db.VetRepository;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

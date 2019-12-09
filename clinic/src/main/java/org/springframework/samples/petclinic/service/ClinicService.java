@@ -3,7 +3,7 @@ package org.springframework.samples.petclinic.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.db.OwnerRepository;
 import org.springframework.samples.petclinic.db.PetRepository;
-import org.springframework.samples.petclinic.db.VetRepository;
+import org.springframework.samples.petclinic.vets.VetRepository;
 import org.springframework.samples.petclinic.db.VisitRepository;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
