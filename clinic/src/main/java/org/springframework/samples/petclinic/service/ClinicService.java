@@ -3,7 +3,6 @@ package org.springframework.samples.petclinic.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.db.OwnerRepository;
 import org.springframework.samples.petclinic.db.PetRepository;
-import org.springframework.samples.petclinic.vets.VetRepository;
 import org.springframework.samples.petclinic.db.VisitRepository;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
@@ -19,6 +18,9 @@ import java.util.List;
 public class ClinicService {
 
     @Autowired
+    protected SameProcessVetGateway vetGateway;
+
+    @Autowired
     protected OwnerRepository owners;
 
     @Autowired
@@ -26,9 +28,6 @@ public class ClinicService {
 
     @Autowired
     protected VisitRepository visits;
-
-    @Autowired
-    protected VetRepository vets;
 
     public Collection<Owner> ownerByLastName(String lastName) {
         return owners.findByLastName(lastName);
@@ -51,7 +50,7 @@ public class ClinicService {
     }
 
     public Collection<Vet> allVets() {
-        return this.vets.findAll();
+        return vetGateway.vetsGateway();
     }
 
     public void save(Owner owner) {
