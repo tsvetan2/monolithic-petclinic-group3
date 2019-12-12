@@ -1,1 +1,4 @@
 stabilise tests! problems with include @Service or @Component only
+
+den test grün machen durch anpassen der Templates/view.
+Anpassung der view auch am master machen und tests dort nachziehen
