@@ -91,7 +91,8 @@ class VetControllerTests {
         ResultActions actions = mockMvc.perform(get("/vets")
             .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
         actions.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.vetList[0].id").value(1));
+            .andExpect(jsonPath("$.vetList[0].id").value(1))
+            .andExpect(jsonPath("$.vet2List[0].firstName").value("James"));
     }
 
 }

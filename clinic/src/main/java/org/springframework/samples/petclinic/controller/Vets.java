@@ -45,6 +45,7 @@ public class Vets {
         return vets;
     }
 
+    @XmlElement
     public Collection<VetDto> getVet2List() {
         if (vets2 == null) {
             vets2 = new ArrayList<>();
