@@ -22,25 +22,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
-/**
- * @author Juergen Hoeller
- * @author Mark Fisher
- * @author Ken Krebs
- * @author Arjen Poutsma
- */
 @RestController
-class VetController {
+class VetRestApi {
 
     private final VetRepository repository;
 
-    public VetController(VetRepository repository) {
+    public VetRestApi(VetRepository repository) {
         this.repository = repository;
     }
 
     @GetMapping("/vets")
-    public Collection<Vet> showVetList() {
-        return this.repository.findAll();
+    public Collection<VetDto> vetList() {
+        return this.repository.findAll()
+            .stream()
+            .map(this::createVetDto)
+            .collect(Collectors.toList());
+    }
+
+    private VetDto createVetDto(Vet v) {
+        return new VetDto(
+            v.getFirstName(),
+            v.getLastName(),
+            v.getSpecialties().stream().map(s -> s.getName()).collect(Collectors.toList()
+            ));
     }
 
 }

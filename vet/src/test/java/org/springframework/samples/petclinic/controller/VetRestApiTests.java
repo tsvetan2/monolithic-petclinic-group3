@@ -17,7 +17,6 @@
 package org.springframework.samples.petclinic.controller;
 
 import org.assertj.core.util.Lists;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +35,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Test class for the {@link VetController}
+ * Test class for the {@link VetRestApi}
  */
-@WebMvcTest(VetController.class)
-class VetControllerTests {
+@WebMvcTest(VetRestApi.class)
+class VetRestApiTests {
 
     @Autowired
     private MockMvc mockMvc;
