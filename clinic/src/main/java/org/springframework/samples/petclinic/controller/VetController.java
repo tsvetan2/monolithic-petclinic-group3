@@ -18,7 +18,6 @@ package org.springframework.samples.petclinic.controller;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
@@ -39,7 +38,7 @@ class VetController {
 
     @GetMapping("/vets.html")
     public String showVetList(Map<String, Object> model) {
-        model.put("vet2List", this.service.allVets2());
+        model.put("vetList", this.service.allVets2());
         return "vets/vetList";
     }
 
