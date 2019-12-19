@@ -15,7 +15,8 @@
   </parent>
 
   <modules>
-	  <module>clinic</module>
+      <module>vet</module>
+      <module>clinic</module>
   </modules>
 
   <properties>
