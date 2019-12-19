@@ -31,11 +31,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.samples.petclinic.service.VetDto;
 import org.springframework.samples.petclinic.vets.Specialty;
 import org.springframework.samples.petclinic.vets.Vet;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Test class for the {@link VetController}
@@ -64,6 +68,14 @@ class VetControllerTests {
         radiology.setName("radiology");
         helen.addSpecialty(radiology);
         given(this.service.allVets()).willReturn(Lists.newArrayList(james, helen));
+
+        VetDto james2 = createVet("James", "Carter", 1, Collections.emptyList());
+        VetDto helen2 = createVet("Helen", "Leary", 2, Collections.singletonList("radiology"));
+        given(this.service.allVets2()).willReturn(Lists.newArrayList(james2, helen2));
+    }
+
+    private VetDto createVet(String james2, String carter, int i, List<String> specialties) {
+        return new VetDto(james2, carter, specialties);
     }
 
     @Test

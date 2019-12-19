@@ -179,6 +179,17 @@ class ClinicServiceTests {
     }
 
     @Test
+    void shouldFindVets2() {
+        Collection<VetDto> vets = service.allVets2();
+
+        VetDto vet = vets.stream().filter(v -> v.lastName.equals("Douglas")).findFirst().get();
+        assertThat(vet.lastName).isEqualTo("Douglas");
+        assertThat(vet.getNrOfSpecialties()).isEqualTo(2);
+        assertThat(vet.specialties.get(0)).isEqualTo("dentistry");
+        assertThat(vet.specialties.get(1)).isEqualTo("surgery");
+    }
+
+    @Test
     @Transactional
     void shouldAddNewVisitForPet() {
         Pet pet7 = service.petById(7);

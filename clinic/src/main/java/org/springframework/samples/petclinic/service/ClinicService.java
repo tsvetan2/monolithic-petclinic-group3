@@ -53,6 +53,10 @@ public class ClinicService {
         return vetGateway.vetsGateway();
     }
 
+    public Collection<VetDto> allVets2() {
+        return vetGateway.vets2Gateway();
+    }
+
     public void save(Owner owner) {
         owners.save(owner);
     }
