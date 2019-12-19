@@ -9,11 +9,12 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @Service
-public class SameProcessVetGateway {
+public class SameProcessVetGateway implements VetGateway {
     @Autowired
-    protected VetRepository vets;
+    private VetRepository vets;
 
-    Collection<VetDto> vetsGateway() {
+    @Override
+    public Collection<VetDto> vetList() {
         return this.vets.findAll()
             .stream()
             .map(this::createVetDto)

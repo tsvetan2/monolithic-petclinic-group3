@@ -17,7 +17,7 @@ import java.util.List;
 public class ClinicService {
 
     @Autowired
-    protected SameProcessVetGateway vetGateway;
+    protected VetGateway vetGateway;
 
     @Autowired
     protected OwnerRepository owners;
@@ -49,7 +49,7 @@ public class ClinicService {
     }
 
     public Collection<VetDto> allVets() {
-        return vetGateway.vetsGateway();
+        return vetGateway.vetList();
     }
 
     public void save(Owner owner) {
