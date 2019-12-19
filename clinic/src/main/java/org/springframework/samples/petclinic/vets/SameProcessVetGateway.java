@@ -1,6 +1,8 @@
-package org.springframework.samples.petclinic.service;
+package org.springframework.samples.petclinic.vets;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.service.VetDto;
+import org.springframework.samples.petclinic.service.VetGateway;
 import org.springframework.samples.petclinic.vets.Vet;
 import org.springframework.samples.petclinic.vets.VetRepository;
 import org.springframework.stereotype.Service;
