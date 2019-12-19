@@ -20,6 +20,16 @@ public class SwitchingVetGateway implements VetGateway {
 
     @Override
     public Collection<VetDto> vetList() {
-        return sameProcessVetGateway.vetList();
+        // TODO Strategien
+        if (useOtherService()) {
+            return restVetGateway.vetList();
+        } else {
+            return sameProcessVetGateway.vetList();
+        }
+    }
+
+    private boolean useOtherService() {
+        return false;
+        // use 1% of traffic
     }
 }
