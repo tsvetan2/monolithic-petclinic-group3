@@ -1,4 +1,17 @@
-stabilise tests! problems with include @Service or @Component only
+TODOs für den Code für master Branch
+------------------------------------
 
-den test grün machen durch anpassen der Templates/view.
-Anpassung der view auch am master machen und tests dort nachziehen
+* stabilise tests! problems with include @Service or @Component only
+
+* Make sure it works with Java 11 as Runtime/Compile
+* Rename GitHub project to monolothic-pet…
+  * Rename Maven group usw. Maybe rename packages?
+* Remove excessive/not needed dependencies
+* Debug why UI is so ugly, should be nice like in screenshot
+* Write descriptive Readme
+* add us to license holders
+
+* get rid of "failed to perform fetch" on mvn test
+
+* remove xml api from vets would easy the exercise, also remove Vets class, because no XML,
+  remove XML binding library etc. only use vets list in model

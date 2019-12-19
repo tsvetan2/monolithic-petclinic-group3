@@ -39,23 +39,9 @@ class VetController {
 
     @GetMapping("/vets.html")
     public String showVetList(Map<String, Object> model) {
-        // Here we are returning an object of type 'Vets' rather than a collection of Vet
-        // objects so it is simpler for Object-Xml mapping
-        Vets vets = new Vets();
-        vets.getVetList().addAll(this.service.allVets());
-        vets.getVet2List().addAll(this.service.allVets2());
-        model.put("vets", vets);
+        model.put("vetList", this.service.allVets());
+        model.put("vet2List", this.service.allVets2());
         return "vets/vetList";
-    }
-
-    @GetMapping({ "/vets" })
-    public @ResponseBody Vets showResourcesVetList() {
-        // Here we are returning an object of type 'Vets' rather than a collection of Vet
-        // objects so it is simpler for JSon/Object mapping
-        Vets vets = new Vets();
-        vets.getVetList().addAll(this.service.allVets());
-        vets.getVet2List().addAll(this.service.allVets2());
-        return vets;
     }
 
 }
