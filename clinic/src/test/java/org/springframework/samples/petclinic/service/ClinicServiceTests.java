@@ -28,9 +28,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
-import org.springframework.samples.petclinic.vets.Vet;
 import org.springframework.samples.petclinic.model.Visit;
-import org.springframework.samples.petclinic.vets.VetsEntityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -168,8 +166,8 @@ class ClinicServiceTests {
     }
 
     @Test
-    void shouldFindVets2() {
-        Collection<VetDto> vets = service.allVets2();
+    void shouldFindVets() {
+        Collection<VetDto> vets = service.allVets();
 
         VetDto vet = vets.stream().filter(v -> v.lastName.equals("Douglas")).findFirst().get();
         assertThat(vet.lastName).isEqualTo("Douglas");

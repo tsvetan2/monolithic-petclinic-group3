@@ -49,9 +49,9 @@ class VetControllerTests {
 
     @BeforeEach
     void setup() {
-        VetDto james2 = createVet("James", "Carter", 1, Collections.emptyList());
-        VetDto helen2 = createVet("Helen", "Leary", 2, Collections.singletonList("radiology"));
-        given(this.service.allVets2()).willReturn(Lists.newArrayList(james2, helen2));
+        VetDto james = createVet("James", "Carter", 1, Collections.emptyList());
+        VetDto helen = createVet("Helen", "Leary", 2, Collections.singletonList("radiology"));
+        given(this.service.allVets()).willReturn(Lists.newArrayList(james, helen));
     }
 
     private VetDto createVet(String james2, String carter, int i, List<String> specialties) {

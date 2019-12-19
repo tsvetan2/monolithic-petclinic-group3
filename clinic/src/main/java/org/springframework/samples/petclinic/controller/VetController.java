@@ -38,7 +38,7 @@ class VetController {
 
     @GetMapping("/vets.html")
     public String showVetList(Map<String, Object> model) {
-        model.put("vetList", this.service.allVets2());
+        model.put("vetList", this.service.allVets());
         return "vets/vetList";
     }
 

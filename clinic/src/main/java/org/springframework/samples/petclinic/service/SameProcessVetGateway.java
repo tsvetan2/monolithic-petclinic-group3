@@ -3,7 +3,6 @@ package org.springframework.samples.petclinic.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.vets.Vet;
 import org.springframework.samples.petclinic.vets.VetRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -14,7 +13,7 @@ public class SameProcessVetGateway {
     @Autowired
     protected VetRepository vets;
 
-    Collection<VetDto> vets2Gateway() {
+    Collection<VetDto> vetsGateway() {
         return this.vets.findAll()
             .stream()
             .map(this::createVetDto)
