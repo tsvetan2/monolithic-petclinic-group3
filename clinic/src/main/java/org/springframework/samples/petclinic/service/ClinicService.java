@@ -49,10 +49,6 @@ public class ClinicService {
         return visits.findByPetId(petId);
     }
 
-    public Collection<Vet> allVets() {
-        return vetGateway.vetsGateway();
-    }
-
     public Collection<VetDto> allVets2() {
         return vetGateway.vets2Gateway();
     }

@@ -14,10 +14,6 @@ public class SameProcessVetGateway {
     @Autowired
     protected VetRepository vets;
 
-    Collection<Vet> vetsGateway() {
-        return this.vets.findAll();
-    }
-
     Collection<VetDto> vets2Gateway() {
         return this.vets.findAll()
             .stream()
