@@ -43,6 +43,7 @@ class VetController {
         // objects so it is simpler for Object-Xml mapping
         Vets vets = new Vets();
         vets.getVetList().addAll(this.service.allVets());
+        vets.getVet2List().addAll(this.service.allVets2());
         model.put("vets", vets);
         return "vets/vetList";
     }
@@ -53,6 +54,7 @@ class VetController {
         // objects so it is simpler for JSon/Object mapping
         Vets vets = new Vets();
         vets.getVetList().addAll(this.service.allVets());
+        vets.getVet2List().addAll(this.service.allVets2());
         return vets;
     }
 
