@@ -12,6 +12,9 @@ public class VetDto {
     public String lastName;
     public List<String> specialties;
 
+    public VetDto() {
+    }
+
     public VetDto(String firstName, String lastName, List<String> specialties) {
         this.firstName = firstName;
         this.lastName = lastName;
