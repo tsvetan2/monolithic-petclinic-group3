@@ -20,7 +20,6 @@ public class SwitchingVetGateway implements VetGateway {
 
     @Override
     public Collection<VetDto> vetList() {
-        // TODO Strategien
         if (useOtherService()) {
             return restVetGateway.vetList();
         } else {
@@ -29,7 +28,6 @@ public class SwitchingVetGateway implements VetGateway {
     }
 
     private boolean useOtherService() {
-        return false;
-        // use 1% of traffic
+        return true;
     }
 }
