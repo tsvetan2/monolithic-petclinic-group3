@@ -19,6 +19,7 @@ import org.springframework.samples.petclinic.vets.Vet;
 import org.springframework.samples.petclinic.vets.VetRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
@@ -28,7 +29,7 @@ import java.util.Collection;
  * @author Ken Krebs
  * @author Arjen Poutsma
  */
-@Controller
+@RestController
 class VetController {
 
     private final VetRepository repository;
@@ -37,7 +38,7 @@ class VetController {
         this.repository = repository;
     }
 
-    @GetMapping("/vets.json")
+    @GetMapping("/vets")
     public Collection<Vet> showVetList() {
         return this.repository.findAll();
     }

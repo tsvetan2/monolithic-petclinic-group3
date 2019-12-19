@@ -16,11 +16,24 @@
 
 package org.springframework.samples.petclinic.controller;
 
+import org.assertj.core.util.Lists;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.samples.petclinic.vets.Specialty;
+import org.springframework.samples.petclinic.vets.Vet;
 import org.springframework.samples.petclinic.vets.VetRepository;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Test class for the {@link VetController}
@@ -32,25 +45,33 @@ class VetControllerTests {
     private MockMvc mockMvc;
 
     @MockBean
-    private VetRepository service;
+    private VetRepository repository;
 
-//    @BeforeEach
-//    void setup() {
-//        VetDto james = createVet("James", "Carter", 1, Collections.emptyList());
-//        VetDto helen = createVet("Helen", "Leary", 2, Collections.singletonList("radiology"));
-//        given(this.service.allVets()).willReturn(Lists.newArrayList(james, helen));
-//    }
-//
-//    private VetDto createVet(String james2, String carter, int i, List<String> specialties) {
-//        return new VetDto(james2, carter, specialties);
-//    }
-//
-//    @Test
-//    void testShowVetListHtml() throws Exception {
-//        mockMvc.perform(get("/vets.html"))
-//            .andExpect(status().isOk())
-//            .andExpect(model().attributeExists("vetList"))
-//            .andExpect(view().name("vets/vetList"));
-//    }
+    @BeforeEach
+    void setup() {
+        Vet james = new Vet();
+        james.setFirstName("James");
+        james.setLastName("Carter");
+        james.setId(1);
+        Vet helen = new Vet();
+        helen.setFirstName("Helen");
+        helen.setLastName("Leary");
+        helen.setId(2);
+        Specialty radiology = new Specialty();
+        radiology.setId(1);
+        radiology.setName("radiology");
+        helen.addSpecialty(radiology);
+        given(repository.findAll()).willReturn(Lists.newArrayList(james, helen));
+    }
+
+    @Test
+    void retrieveVetsJson() throws Exception {
+        mockMvc.perform(get("/vets"))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$").value(hasSize(2)))
+            .andExpect(jsonPath("$[0].lastName").value("Carter"))
+            .andExpect(jsonPath("$[1].specialties[0]").value("radiology"));
+    }
 
 }
