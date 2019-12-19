@@ -49,7 +49,7 @@ public class ClinicService {
         return visits.findByPetId(petId);
     }
 
-    public Collection<VetDto> allVets() {
+    public Collection<Vet> allVets() {
         return vetGateway.vetsGateway();
     }
 

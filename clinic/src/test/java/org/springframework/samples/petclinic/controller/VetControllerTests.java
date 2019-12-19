@@ -27,21 +27,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.util.collections.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.samples.petclinic.service.VetDto;
 import org.springframework.samples.petclinic.vets.Specialty;
+import org.springframework.samples.petclinic.vets.Vet;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Test class for the {@link VetController}
@@ -57,13 +51,19 @@ class VetControllerTests {
 
     @BeforeEach
     void setup() {
-        VetDto james = createVet("James", "Carter", 1, Collections.emptyList());
-        VetDto helen = createVet("Helen", "Leary", 2, Collections.singletonList("radiology"));
+        Vet james = new Vet();
+        james.setFirstName("James");
+        james.setLastName("Carter");
+        james.setId(1);
+        Vet helen = new Vet();
+        helen.setFirstName("Helen");
+        helen.setLastName("Leary");
+        helen.setId(2);
+        Specialty radiology = new Specialty();
+        radiology.setId(1);
+        radiology.setName("radiology");
+        helen.addSpecialty(radiology);
         given(this.service.allVets()).willReturn(Lists.newArrayList(james, helen));
-    }
-
-    private VetDto createVet(String james2, String carter, int i, List<String> specialties) {
-        return new VetDto(james2, carter, specialties);
     }
 
     @Test
@@ -79,7 +79,7 @@ class VetControllerTests {
         ResultActions actions = mockMvc.perform(get("/vets")
             .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
         actions.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.vetList[0].firstName").value("James"));
+            .andExpect(jsonPath("$.vetList[0].id").value(1));
     }
 
 }
