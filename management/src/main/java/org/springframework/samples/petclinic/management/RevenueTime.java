@@ -24,7 +24,7 @@ public class RevenueTime {
     private LocalDate visitDate;
 
     @Column
-    private Integer value;
+    private Long value;
 
     public Integer getId() {
         return id;
@@ -50,11 +50,11 @@ public class RevenueTime {
         this.visitDate = visitDate;
     }
 
-    public Integer getValue() {
+    public Long getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Long value) {
         this.value = value;
     }
 }
