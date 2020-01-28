@@ -18,7 +18,7 @@ package org.springframework.samples.petclinic.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.samples.petclinic.db.YearlyRevenue;
+import org.springframework.samples.petclinic.management.YearlyRevenue;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;

@@ -8,3 +8,5 @@ TODOs für den Code für master Branch
 * add us to license holders
 
 * @DataJpaTest vs wie alles + datenbank am besten? ClinicServiceTests
+
+* YearlyRevenue to model

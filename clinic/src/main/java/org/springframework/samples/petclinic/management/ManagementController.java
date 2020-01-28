@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic.controller;
+package org.springframework.samples.petclinic.management;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.service.ClinicService;

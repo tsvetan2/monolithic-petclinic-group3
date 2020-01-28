@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic.db;
+package org.springframework.samples.petclinic.management;
 
 public class YearlyRevenue {
 

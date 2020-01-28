@@ -1,7 +1,8 @@
-package org.springframework.samples.petclinic.db;
+package org.springframework.samples.petclinic.management;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
+import org.springframework.samples.petclinic.management.YearlyRevenue;
 import org.springframework.samples.petclinic.model.Visit;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public interface RevenueRepository extends Repository<Visit, Integer> {
 
-    @Query("Select new org.springframework.samples.petclinic.db.YearlyRevenue(YEAR(v.date), sum(v.cost)) " +
+    @Query("Select new org.springframework.samples.petclinic.management.YearlyRevenue(YEAR(v.date), sum(v.cost)) " +
         "from Visit v " +
         "group by YEAR(v.date)")
     List<YearlyRevenue> listYearlyRevenue();

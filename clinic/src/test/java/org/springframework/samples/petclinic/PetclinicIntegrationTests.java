@@ -18,10 +18,10 @@ package org.springframework.samples.petclinic;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.samples.petclinic.db.RevenueRepository;
+import org.springframework.samples.petclinic.management.RevenueRepository;
 import org.springframework.samples.petclinic.db.VetRepository;
 import org.springframework.samples.petclinic.db.VisitRepository;
-import org.springframework.samples.petclinic.db.YearlyRevenue;
+import org.springframework.samples.petclinic.management.YearlyRevenue;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 
