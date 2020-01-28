@@ -15,11 +15,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ManagementClientTests {
 
     HttpServer server;
-    ManagementService client = new ManagementClient("http://127.0.0.1:9999/management");
+    ManagementService client = new ManagementClient("http://127.0.0.1:7777/management");
 
     @BeforeEach
     void startServer() throws IOException {
-        server = HttpServer.create(new InetSocketAddress(9999), 0);
+        server = HttpServer.create(new InetSocketAddress(7777), 0);
         server.createContext("/management/revenue", exchange -> {
             String response = "[{\"year\":2020, \"total\":330}]";
             exchange.getResponseHeaders().add("content-type", "application/json");
