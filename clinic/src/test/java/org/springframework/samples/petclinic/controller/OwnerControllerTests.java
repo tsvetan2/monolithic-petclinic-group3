@@ -48,7 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * @author Colin But
  */
-@WebMvcTest
+@WebMvcTest(controllers = {OwnerController.class})
 class OwnerControllerTests {
 
     private static final int TEST_OWNER_ID = 1;

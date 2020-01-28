@@ -9,4 +9,5 @@ TODOs für den Code für master Branch
 
 * @DataJpaTest vs wie alles + datenbank am besten? ClinicServiceTests
 
-* YearlyRevenue to model
+* move YearlyRevenue to model
+* add @WebMvcTest(controllers = {ManagementController.class}) back to all controller tests!

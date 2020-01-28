@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * @author Colin But
  */
-@WebMvcTest
+@WebMvcTest(controllers = {VisitController.class})
 class VisitControllerTests {
 
     private static final int TEST_PET_ID = 1;
