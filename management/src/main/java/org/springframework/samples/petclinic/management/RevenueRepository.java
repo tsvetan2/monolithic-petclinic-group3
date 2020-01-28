@@ -9,13 +9,11 @@ import java.util.List;
 /**
  * Query reports of revenue.
  */
-public interface RevenueRepository { // extends Repository<Visit, Integer> {
+public interface RevenueRepository extends Repository<RevenueTime, Integer> {
 
-/*
-    @Query("Select new org.springframework.samples.petclinic.management.YearlyRevenue(YEAR(v.date), sum(v.cost)) " +
-        "from Visit v " +
-        "group by YEAR(v.date)")
-*/
+    @Query("Select new org.springframework.samples.petclinic.management.YearlyRevenue(YEAR(t.visitDate), sum(t.value)) " +
+        "from RevenueTime t " +
+        "group by YEAR(t.visitDate)")
     List<YearlyRevenue> listYearlyRevenue();
 
 }

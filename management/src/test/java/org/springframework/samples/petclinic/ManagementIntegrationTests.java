@@ -26,12 +26,12 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class PetclinicIntegrationTests {
+class ManagementIntegrationTests {
 
-    // @Autowired
+    @Autowired
     RevenueRepository revenueRepository;
 
-    // @Test
+    @Test
     void testGenerateRevenueReport() {
         List<YearlyRevenue> yearlyRevenues = this.revenueRepository.listYearlyRevenue();
         assertThat(yearlyRevenues).hasSize(1);

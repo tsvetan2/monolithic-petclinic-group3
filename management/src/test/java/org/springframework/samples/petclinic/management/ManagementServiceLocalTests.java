@@ -49,13 +49,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Michael Isvy
  * @author Dave Syer
  */
-// @SpringBootTest
+@SpringBootTest
 class ManagementServiceLocalTests {
 
-    // @Autowired
+    @Autowired
     ManagementServiceLocal service;
 
-    // @Test
+    @Test
     void shouldListYearlyRevenue() {
         List<YearlyRevenue> yearlyRevenues = service.listYearlyRevenue();
         assertThat(yearlyRevenues).hasSize(1);
