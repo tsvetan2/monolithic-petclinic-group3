@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.controller;
+package org.springframework.samples.petclinic.management;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.samples.petclinic.management.ManagementService;
 import org.springframework.samples.petclinic.management.YearlyRevenue;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-@WebMvcTest
+@WebMvcTest(controllers = {ManagementController.class})
 class ManagementControllerTests {
 
     static final List<YearlyRevenue> EXPECTED_REVENUES = asList(
@@ -44,7 +45,7 @@ class ManagementControllerTests {
     MockMvc mockMvc;
 
     @MockBean
-    ClinicService service;
+    ManagementService service;
 
     @BeforeEach
     void setup() {

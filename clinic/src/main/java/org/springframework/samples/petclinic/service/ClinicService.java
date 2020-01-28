@@ -32,9 +32,6 @@ public class ClinicService {
     @Autowired
     private VetRepository vets;
 
-    @Autowired
-    private RevenueRepository revenueRepository;
-
     public Collection<Owner> ownerByLastName(String lastName) {
         return owners.findByLastName(lastName);
     }
@@ -69,9 +66,5 @@ public class ClinicService {
 
     public void save(Visit visit) {
         visits.save(visit);
-    }
-
-    public List<YearlyRevenue> listYearlyRevenue() {
-        return revenueRepository.listYearlyRevenue();
     }
 }
