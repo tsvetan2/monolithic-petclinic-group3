@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -60,5 +61,12 @@ class ManagementServiceLocalTests {
         List<YearlyRevenue> yearlyRevenues = service.listYearlyRevenue();
         assertThat(yearlyRevenues).hasSize(1);
         assertThat(yearlyRevenues.get(0).getTotal()).isEqualTo(1337L);
+    }
+
+    @Test
+    void shouldSaveRevenue() {
+        service.saveRevenue(1, LocalDate.of(2020, 1, 2), 100L);
+
+        assertThat(service.listYearlyRevenue()).contains(new YearlyRevenue(2020, 100L));
     }
 }
