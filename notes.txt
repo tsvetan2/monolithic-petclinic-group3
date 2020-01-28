@@ -12,3 +12,4 @@ TODOs für den Code für master Branch
 * move YearlyRevenue to model package
 * add @WebMvcTest(controllers = {ManagementController.class}) back to all controller tests!
 * name von management controller test case ausbessern
+* Revenue Bericht im Menü linken
