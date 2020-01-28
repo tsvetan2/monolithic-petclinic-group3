@@ -16,7 +16,7 @@ public class ArtemisSpringConfiguration {
     public ArtemisConfigurationCustomizer customizer() {
         return configuration -> {
             try {
-                configuration.addAcceptorConfiguration("netty", "tcp://localhost:" + artemisProperties.getPort());
+                configuration.addAcceptorConfiguration("netty", "tcp://" + artemisProperties.getHost() + ":" + artemisProperties.getPort());
             } catch (Exception e) {
                 throw new RuntimeException("Failed to add netty transport acceptor to artemis instance", e);
             }
