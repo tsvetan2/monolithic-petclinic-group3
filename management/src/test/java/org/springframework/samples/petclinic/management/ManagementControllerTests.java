@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -27,11 +28,11 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-// @WebMvcTest(controllers = {ManagementController.class})
+@WebMvcTest(controllers = {ManagementController.class})
 class ManagementControllerTests {
 
     static final List<YearlyRevenue> EXPECTED_REVENUES = asList(
@@ -44,17 +45,18 @@ class ManagementControllerTests {
     @MockBean
     ManagementService service;
 
-    // @BeforeEach
+    @BeforeEach
     void setup() {
         given(this.service.listYearlyRevenue()).willReturn(EXPECTED_REVENUES);
     }
 
-    // @Test
-    void testShowVetListHtml() throws Exception {
+    @Test
+    void testShowRevenueJson() throws Exception {
         mockMvc.perform(get("/management/revenue")) //
             .andExpect(status().isOk()) //
-            .andExpect(model().attribute("revenues", EXPECTED_REVENUES)) //
-            .andExpect(view().name("management/showRevenue"));
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$[0].year").value(2020))
+            .andExpect(jsonPath("$[0].total").value(333));
     }
 
 }
