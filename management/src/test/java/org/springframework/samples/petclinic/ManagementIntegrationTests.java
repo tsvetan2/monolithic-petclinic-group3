@@ -35,6 +35,6 @@ class ManagementIntegrationTests {
     void testGenerateRevenueReport() {
         List<YearlyRevenue> yearlyRevenues = this.revenueRepository.listYearlyRevenue();
         assertThat(yearlyRevenues).hasSize(1);
-        assertThat(yearlyRevenues.get(0).getTotal()).isEqualTo(800L);
+        assertThat(yearlyRevenues.get(0).getTotal()).isEqualTo(1337L);
     }
 }

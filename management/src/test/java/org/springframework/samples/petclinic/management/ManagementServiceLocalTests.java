@@ -59,6 +59,6 @@ class ManagementServiceLocalTests {
     void shouldListYearlyRevenue() {
         List<YearlyRevenue> yearlyRevenues = service.listYearlyRevenue();
         assertThat(yearlyRevenues).hasSize(1);
-        assertThat(yearlyRevenues.get(0).getTotal()).isEqualTo(800L);
+        assertThat(yearlyRevenues.get(0).getTotal()).isEqualTo(1337L);
     }
 }
