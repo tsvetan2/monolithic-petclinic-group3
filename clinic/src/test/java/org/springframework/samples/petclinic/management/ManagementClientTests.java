@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ManagementClientTests {
 
     HttpServer server;
-    ManagementService client = new ManagementClient("http://127.0.0.1:7777/management");
+    ManagementClient client = new ManagementClient("http://127.0.0.1:7777/management");
 
     @BeforeEach
     void startServer() throws IOException {

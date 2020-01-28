@@ -8,11 +8,9 @@ public class YearlyRevenue {
     private Long total;
 
     private YearlyRevenue() {
-        // for Rest endpoint
     }
 
     public YearlyRevenue(Integer year, Long total) {
-        // for DB query
         this.year = year;
         this.total = total;
     }
@@ -27,7 +25,6 @@ public class YearlyRevenue {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (!(o instanceof YearlyRevenue)) return false;
         YearlyRevenue that = (YearlyRevenue) o;
         return Objects.equals(year, that.year) && Objects.equals(total, that.total);
@@ -40,9 +37,6 @@ public class YearlyRevenue {
 
     @Override
     public String toString() {
-        return "YearlyRevenue{" +
-            "year=" + year +
-            ", total=" + total +
-            '}';
+        return "YearlyRevenue{" + "year=" + year + ", total=" + total + '}';
     }
 }

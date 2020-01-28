@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ManagementClient implements ManagementService {
+public class ManagementClient {
 
     private final String baseUrl;
     private final RestTemplate restTemplate;
@@ -19,7 +19,6 @@ public class ManagementClient implements ManagementService {
         restTemplate = new RestTemplate();
     }
 
-    @Override
     public List<YearlyRevenue> listYearlyRevenue() {
         ResponseEntity<YearlyRevenue[]> revenues = restTemplate.getForEntity(baseUrl + "/revenue", YearlyRevenue[].class);
         return Arrays.asList(revenues.getBody());

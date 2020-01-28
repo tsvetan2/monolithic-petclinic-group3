@@ -18,10 +18,8 @@ package org.springframework.samples.petclinic;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.samples.petclinic.management.RevenueRepository;
 import org.springframework.samples.petclinic.db.VetRepository;
 import org.springframework.samples.petclinic.db.VisitRepository;
-import org.springframework.samples.petclinic.management.YearlyRevenue;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 
@@ -39,9 +37,6 @@ class PetclinicIntegrationTests {
     @Autowired
     VisitRepository visitsRepository;
 
-    @Autowired
-    RevenueRepository revenueRepository;
-
     @Test
     void testFindVets() {
         Collection<Vet> all = vetsRepository.findAll();
@@ -53,12 +48,5 @@ class PetclinicIntegrationTests {
         List<Visit> visits = this.visitsRepository.findByPetId(7);
         assertThat(visits).hasSize(2);
         assertThat(visits.get(0).getCost()).isEqualTo(100);
-    }
-
-    @Test
-    void testGenerateRevenueReport() {
-        List<YearlyRevenue> yearlyRevenues = this.revenueRepository.listYearlyRevenue();
-        assertThat(yearlyRevenues).hasSize(1);
-        assertThat(yearlyRevenues.get(0).getTotal()).isEqualTo(800L);
     }
 }

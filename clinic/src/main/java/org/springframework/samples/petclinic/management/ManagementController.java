@@ -10,7 +10,7 @@ import java.util.Map;
 public class ManagementController {
 
     @Autowired
-    private ManagementService managementService;
+    private ManagementClient managementService;
 
     @GetMapping("/management/revenue")
     public String showRevenue(Map<String, Object> model) {

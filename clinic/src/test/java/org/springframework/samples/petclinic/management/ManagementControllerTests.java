@@ -42,7 +42,7 @@ class ManagementControllerTests {
     MockMvc mockMvc;
 
     @MockBean
-    ManagementService service;
+    ManagementClient service;
 
     @BeforeEach
     void setup() {
