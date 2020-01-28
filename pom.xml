@@ -17,6 +17,7 @@
 
     <modules>
         <module>clinic</module>
+        <module>management</module>
     </modules>
 
     <properties>
