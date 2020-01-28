@@ -17,10 +17,12 @@ package org.springframework.samples.petclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jms.annotation.EnableJms;
 
 /**
  * @author Dave Syer
  */
+@EnableJms
 @SpringBootApplication(proxyBeanMethods = false)
 public class ManagementApplication {
 

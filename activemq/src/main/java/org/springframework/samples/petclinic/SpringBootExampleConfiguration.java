@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
 
 @Configuration
-@EnableJms
+@EnableJms // TODO can we remove it
 public class SpringBootExampleConfiguration {
 
     @Autowired
