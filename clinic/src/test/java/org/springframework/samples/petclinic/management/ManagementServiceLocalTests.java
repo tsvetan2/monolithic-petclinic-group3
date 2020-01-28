@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * execution.</li>
  * <li><strong>Dependency Injection</strong> of test fixture instances, meaning that we don't need to perform
  * application context lookups. See the use of {@link Autowired @Autowired} on the <code>{@link
- * ManagementServiceTests#service clinicService}</code> instance variable, which uses autowiring <em>by type</em>.
+ * ManagementServiceLocalTests#service clinicService}</code> instance variable, which uses autowiring <em>by type</em>.
  * <li><strong>Transaction management</strong>, meaning each test method is executed in its own transaction, which is
  * automatically rolled back by default. Thus, even if tests insert or otherwise change database state, there is no need
  * for a teardown or cleanup script.
@@ -50,10 +50,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Dave Syer
  */
 @SpringBootTest
-class ManagementServiceTests {
+class ManagementServiceLocalTests {
 
     @Autowired
-    ManagementService service;
+    ManagementServiceLocal service;
 
     @Test
     void shouldListYearlyRevenue() {
