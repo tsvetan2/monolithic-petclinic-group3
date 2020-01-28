@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class YearlyRevenue {
 
-    private Integer year;
-    private Long total;
+    private final Integer year;
+    private final Long total;
 
     public YearlyRevenue(Integer year, Long total) {
         this.year = year;
@@ -22,11 +22,9 @@ public class YearlyRevenue {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (!(o instanceof YearlyRevenue)) return false;
         YearlyRevenue that = (YearlyRevenue) o;
-        return Objects.equals(year, that.year) &&
-            Objects.equals(total, that.total);
+        return Objects.equals(year, that.year) && Objects.equals(total, that.total);
     }
 
     @Override
@@ -34,11 +32,4 @@ public class YearlyRevenue {
         return Objects.hash(year, total);
     }
 
-    @Override
-    public String toString() {
-        return "YearlyRevenue{" +
-            "year=" + year +
-            ", total=" + total +
-            '}';
-    }
 }

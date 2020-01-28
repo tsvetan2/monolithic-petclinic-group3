@@ -16,9 +16,12 @@ public class VisitCreatedListener {
 
     @JmsListener(destination = "visitCreated")
     public void receiveMessage(Message whatever) {
-        Map<?, ?> payload = (Map<?, ?>) whatever.getPayload();
-        System.out.println("Received <" + payload + ">");
-        managementService.saveRevenue(Integer.parseInt((String) payload.get("source_id")), LocalDate.parse((String) payload.get("visit_date")), Long.parseLong((String) payload.get("cost")));
+        Map<String, ?> payload = (Map<String, ?>) whatever.getPayload();
+        Integer sourceId = (Integer) payload.get("source_id");
+        LocalDate visitDate = LocalDate.parse((String) payload.get("visit_date"));
+        Integer value = (Integer) payload.get("cost");
+
+        managementService.saveRevenue(sourceId, visitDate, value);
     }
 
 }
