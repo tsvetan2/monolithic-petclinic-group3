@@ -16,9 +16,13 @@
 package org.springframework.samples.petclinic.service;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.samples.petclinic.management.YearlyRevenue;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.messaging.Message;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -28,9 +32,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.eq;
 
 /**
  * Integration test of the Service and the Repository layer.
@@ -63,6 +68,9 @@ class ClinicServiceTests {
 
     @Autowired
     ClinicService service;
+
+    @MockBean
+    JmsMessagingTemplate jmsTemplate;
 
     @Test
     void shouldFindOwnersByLastName() {
@@ -196,6 +204,13 @@ class ClinicServiceTests {
         pet7 = service.petById(7);
         assertThat(pet7.getVisits().size()).isEqualTo(found + 1);
         assertThat(visit.getId()).isNotNull();
+
+        ArgumentCaptor<Message> captor = ArgumentCaptor.forClass(Message.class);
+        Mockito.verify(jmsTemplate).send(eq("visitCreated"), captor.capture());
+        Map payload = (Map) captor.getValue().getPayload();
+        assertThat(payload).containsKey("source_id")
+            .containsEntry("visit_date", LocalDate.now().toString())
+            .containsEntry("cost", 100);
     }
 
     @Test
@@ -208,4 +223,5 @@ class ClinicServiceTests {
         assertThat(visitArr[0].getPetId()).isEqualTo(7);
         assertThat(visitArr[0].getCost()).isEqualTo(100);
     }
+
 }
