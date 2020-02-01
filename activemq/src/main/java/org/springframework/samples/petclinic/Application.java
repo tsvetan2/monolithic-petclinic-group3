@@ -19,10 +19,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(proxyBeanMethods = false)
-public class ActiveMQApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(ActiveMQApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }

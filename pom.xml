@@ -10,10 +10,10 @@
         <version>2.2.1.RELEASE</version>
     </parent>
 
-    <groupId>org.springframework.samples</groupId>
+    <groupId>org.monolithic.petclinic</groupId>
     <artifactId>petclinic-root</artifactId>
     <packaging>pom</packaging>
-    <version>2.2.0.BUILD-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <modules>
         <module>clinic</module>
