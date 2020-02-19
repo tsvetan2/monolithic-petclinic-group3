@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.controller;
+package org.springframework.samples.petclinic.vets;
 
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
