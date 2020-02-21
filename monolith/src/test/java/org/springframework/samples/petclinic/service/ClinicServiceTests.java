@@ -25,7 +25,6 @@ import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.model.YearlyRevenue;
-import org.springframework.samples.petclinic.vets.Vet;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
@@ -152,21 +151,6 @@ class ClinicServiceTests {
 
         pet7 = service.petById(7);
         assertThat(pet7.getName()).isEqualTo(newName);
-    }
-
-    @Test
-    void shouldFindVets() {
-        Collection<Vet> vets = service.allVets();
-
-        assertThat(vets)
-            .filteredOn(vet -> vet.getId() == 3)
-            .hasSize(1)
-            .first()
-            .hasFieldOrPropertyWithValue("lastName", "Douglas")
-            .hasFieldOrPropertyWithValue("nrOfSpecialties", 2)
-            .extracting(Vet::getSpecialties).asList()
-            .extracting("name")
-            .containsExactly("dentistry", "surgery");
     }
 
     @Test
