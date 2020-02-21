@@ -30,23 +30,8 @@ class VetServiceTests {
     VetService service;
 
     @Test
-    void shouldFindVets() {
-        Collection<Vet> vets = service.allVets();
-
-        assertThat(vets)
-            .filteredOn(vet -> vet.getId() == 3)
-            .hasSize(1)
-            .first()
-            .hasFieldOrPropertyWithValue("lastName", "Douglas")
-            .hasFieldOrPropertyWithValue("nrOfSpecialties", 2)
-            .extracting(Vet::getSpecialties).asList()
-            .extracting("name")
-            .containsExactly("dentistry", "surgery");
-    }
-
-    @Test
     void shouldFindVetsNew() {
-        Collection<VetDto> vets = service.allVetsNew();
+        Collection<VetDto> vets = service.allVets();
 
         assertThat(vets)
             .hasSize(6)

@@ -14,11 +14,7 @@ public class VetService {
         this.vets = vets;
     }
 
-    public Collection<Vet> allVets() {
-        return this.vets.findAll();
-    }
-
-    public Collection<VetDto> allVetsNew() {
+    public Collection<VetDto> allVets() {
         return this.vets.findAll()
             .stream()
             .map(this::mapToDto)
