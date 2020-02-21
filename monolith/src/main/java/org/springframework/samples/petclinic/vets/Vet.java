@@ -44,7 +44,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "vets")
-public class Vet implements Serializable {
+class Vet implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

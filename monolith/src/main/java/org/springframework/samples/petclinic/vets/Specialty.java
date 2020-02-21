@@ -30,7 +30,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "specialties")
-public class Specialty implements Serializable {
+class Specialty implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
