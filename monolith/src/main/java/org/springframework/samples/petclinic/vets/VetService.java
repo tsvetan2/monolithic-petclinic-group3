@@ -1,6 +1,5 @@
 package org.springframework.samples.petclinic.vets;
 
-import org.springframework.samples.petclinic.model.NamedEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -23,7 +22,7 @@ public class VetService {
 
     private VetDto mapToDto(Vet vet) {
         String[] specialties = vet.getSpecialties().stream()
-            .map(NamedEntity::getName)
+            .map(Specialty::getName)
             .toArray(String[]::new);
         return new VetDto(vet.getFirstName(), vet.getLastName(), specialties);
     }
