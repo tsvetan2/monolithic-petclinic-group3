@@ -43,4 +43,17 @@ class VetServiceTests {
             .extracting("name")
             .containsExactly("dentistry", "surgery");
     }
+
+    @Test
+    void shouldFindVetsNew() {
+        Collection<VetDto> vets = service.allVetsNew();
+
+        assertThat(vets)
+            .hasSize(6)
+            .element(2)
+            .hasFieldOrPropertyWithValue("lastName", "Douglas")
+            .hasFieldOrPropertyWithValue("nrOfSpecialties", 2)
+            .extracting("specialties").asList()
+            .containsExactly("dentistry", "surgery");
+    }
 }
