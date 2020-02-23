@@ -27,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class VetServiceTests {
 
     @Autowired
-    VetService service;
+    MonolithVetService service;
 
     @Test
     void shouldFindVetsNew() {

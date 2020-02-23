@@ -19,10 +19,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static java.util.Arrays.asList;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
@@ -33,12 +35,21 @@ class VetControllerTests {
     @Autowired
     MockMvc mockMvc;
 
+    @MockBean
+    VetService vetServiceMock;
+
     @Test
     void testShowVetListHtml() throws Exception {
+        when(vetServiceMock.allVets()).thenReturn(asList(
+            new VetDto("James", "Carter"),
+            new VetDto("Helen", "Leary", "radiology"),
+            new VetDto("Linda", "Douglas", "dentistry", "surgery")
+        ));
+
         mockMvc.perform(get("/vets"))
             .andExpect(status().isOk())
             .andExpect(xpath("//table[@id='vets']").exists())
-            .andExpect(xpath("//table[@id='vets']/tbody/tr").nodeCount(6))
+            .andExpect(xpath("//table[@id='vets']/tbody/tr").nodeCount(3))
             .andExpect(xpath("//table[@id='vets']/tbody/tr[position()=1]/td[position()=1]").string("James Carter"))
             .andExpect(xpath("//table[@id='vets']/tbody/tr[position()=1]/td[position()=2]/span").string("none"))
             .andExpect(xpath("//table[@id='vets']/tbody/tr[position()=2]/td[position()=1]").string("Helen Leary"))
