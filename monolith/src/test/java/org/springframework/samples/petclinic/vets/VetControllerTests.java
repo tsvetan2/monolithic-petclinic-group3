@@ -37,7 +37,6 @@ class VetControllerTests {
     void testShowVetListHtml() throws Exception {
         mockMvc.perform(get("/vets"))
             .andExpect(status().isOk())
-            .andDo(print())
             .andExpect(xpath("//table[@id='vets']").exists())
             .andExpect(xpath("//table[@id='vets']/tbody/tr").nodeCount(6))
             .andExpect(xpath("//table[@id='vets']/tbody/tr[position()=1]/td[position()=1]").string("James Carter"))
