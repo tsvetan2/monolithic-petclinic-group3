@@ -127,12 +127,12 @@ public class Owner extends Person {
      * @return true if pet name is already in use
      */
     public Pet getPet(String name, boolean ignoreNew) {
-        name = name.toLowerCase();
+        String normalName = name.toLowerCase();
         for (Pet pet : getPetsInternal()) {
             if (!ignoreNew || !pet.isNew()) {
                 String compName = pet.getName();
                 compName = compName.toLowerCase();
-                if (compName.equals(name)) {
+                if (compName.equals(normalName)) {
                     return pet;
                 }
             }
@@ -143,7 +143,6 @@ public class Owner extends Person {
     @Override
     public String toString() {
         return new ToStringCreator(this)
-
                 .append("id", this.getId()).append("new", this.isNew())
                 .append("lastName", this.getLastName())
                 .append("firstName", this.getFirstName()).append("address", this.address)

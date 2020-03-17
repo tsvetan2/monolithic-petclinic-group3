@@ -15,10 +15,8 @@
  */
 package org.springframework.samples.petclinic.controller;
 
-import org.springframework.samples.petclinic.db.OwnerRepository;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.db.VisitRepository;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,10 +64,10 @@ class OwnerController {
     public String processCreationForm(@Valid Owner owner, BindingResult result) {
         if (result.hasErrors()) {
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
-        } else {
-            this.service.save(owner);
-            return "redirect:/owners/" + owner.getId();
         }
+
+        this.service.save(owner);
+        return "redirect:/owners/" + owner.getId();
     }
 
     @GetMapping("/owners/find")
@@ -94,8 +92,8 @@ class OwnerController {
             return "owners/findOwners";
         } else if (results.size() == 1) {
             // 1 owner found
-            owner = results.iterator().next();
-            return "redirect:/owners/" + owner.getId();
+            Owner foundOwner = results.iterator().next();
+            return "redirect:/owners/" + foundOwner.getId();
         } else {
             // multiple owners found
             model.put("selections", results);
@@ -114,11 +112,11 @@ class OwnerController {
     public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result, @PathVariable("ownerId") int ownerId) {
         if (result.hasErrors()) {
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
-        } else {
-            owner.setId(ownerId);
-            this.service.save(owner);
-            return "redirect:/owners/{ownerId}";
         }
+
+        owner.setId(ownerId);
+        this.service.save(owner);
+        return "redirect:/owners/{ownerId}";
     }
 
     /**

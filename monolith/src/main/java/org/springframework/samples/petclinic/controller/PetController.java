@@ -15,8 +15,6 @@
  */
 package org.springframework.samples.petclinic.controller;
 
-import org.springframework.samples.petclinic.db.OwnerRepository;
-import org.springframework.samples.petclinic.db.PetRepository;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -85,10 +83,10 @@ class PetController {
         if (result.hasErrors()) {
             model.put("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
-        } else {
-            this.service.save(pet);
-            return "redirect:/owners/{ownerId}";
         }
+
+        this.service.save(pet);
+        return "redirect:/owners/{ownerId}";
     }
 
     @GetMapping("/pets/{petId}/edit")
@@ -104,11 +102,11 @@ class PetController {
             pet.setOwner(owner);
             model.put("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
-        } else {
-            owner.addPet(pet);
-            this.service.save(pet);
-            return "redirect:/owners/{ownerId}";
         }
+
+        owner.addPet(pet);
+        this.service.save(pet);
+        return "redirect:/owners/{ownerId}";
     }
 
 }

@@ -19,7 +19,6 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.springframework.samples.petclinic.db.PetRepository;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.db.VisitRepository;
@@ -86,10 +85,10 @@ class VisitController {
     public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
         if (result.hasErrors()) {
             return "pets/createOrUpdateVisitForm";
-        } else {
-            this.service.save(visit);
-            return "redirect:/owners/{ownerId}";
         }
+
+        this.service.save(visit);
+        return "redirect:/owners/{ownerId}";
     }
 
 }
