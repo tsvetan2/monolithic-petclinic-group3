@@ -15,8 +15,8 @@
   </parent>
 
   <modules>
-      <module>vet</module>
-      <module>clinic</module>
+      <module>vets</module>
+      <module>monolith</module>
   </modules>
 
   <properties>
