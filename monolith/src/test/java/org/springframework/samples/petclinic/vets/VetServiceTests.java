@@ -30,7 +30,7 @@ class VetServiceTests {
     MonolithVetService service;
 
     @Test
-    void shouldFindVetsNew() {
+    void shouldFindVets() {
         Collection<VetDto> vets = service.allVets();
 
         assertThat(vets)
