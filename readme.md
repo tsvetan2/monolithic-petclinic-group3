@@ -1,6 +1,6 @@
-# Breaking The Monolith
+# Breaking The Monolith Group 3
 
-The purpose of this fork is to be a monolithic mess. 
+The purpose of this fork is to be a monolithic mess.
 You can use it to break and extract microservices.
 As the PetClinic is continuously deployed you need to make small changes that preserve the behaviour.
 The tasks involve refactoring, TDD, branch by abstraction and introducing an event bus.
@@ -12,32 +12,34 @@ Find an Overview in this [PDF](https://github.com/gregorriegler/monolithic-petcl
 ## Working with the Monolithic Petclinic
 
 The following items should be installed in your system:
-* Java 8 or newer.
-* git
 
-1) **Clone the repository**
-    ```
-    git clone https://github.com/gregorriegler/monolithic-petclinic.git
-    ```
-2) **Import into Eclipse or STS**
-    ```
-    File -> Import -> Maven -> Existing Maven project
-    ```
-3) **Import into IntelliJ IDEA**
+- Java 8 or newer.
+- git
 
-    In the main menu, choose `File -> Open` and select the Petclinic [pom.xml](pom.xml). Click on the `Open` button.
+1. **Clone the repository**
+   ```
+   git clone https://github.com/gregorriegler/monolithic-petclinic.git
+   ```
+2. **Import into Eclipse or STS**
+   ```
+   File -> Import -> Maven -> Existing Maven project
+   ```
+3. **Import into IntelliJ IDEA**
 
-4) **Run it on the CLI**
+   In the main menu, choose `File -> Open` and select the Petclinic [pom.xml](pom.xml). Click on the `Open` button.
 
-    You can run it with the spring boot maven plugin like this:
-    ```
-    cd monolith
-    ../mvnw spring-boot:run
-    ```
+4. **Run it on the CLI**
 
-5) **Navigate to the Petclinic**
+   You can run it with the spring boot maven plugin like this:
 
-    Visit [http://localhost:8080](http://localhost:8080) in your browser.
+   ```
+   cd monolith
+   ../mvnw spring-boot:run
+   ```
+
+5. **Navigate to the Petclinic**
+
+   Visit [http://localhost:8080](http://localhost:8080) in your browser.
 
 ## Database configuration
 
@@ -45,4 +47,4 @@ Petclinic uses an in-memory database (HSQLDB) which gets populated at startup wi
 
 ## License
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](LICENSE)  
+[![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](LICENSE)
