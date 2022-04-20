@@ -15,23 +15,18 @@
  */
 package org.springframework.samples.petclinic.vets;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
-import org.springframework.samples.petclinic.model.Person;
-import org.springframework.samples.petclinic.model.Specialty;
 
 /**
  * @author Ken Krebs
@@ -41,7 +36,16 @@ import org.springframework.samples.petclinic.model.Specialty;
  */
 @Entity
 @Table(name = "vets")
-public class Vet extends Person {
+public class Vet implements Serializable, IVetInfo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "first_name")
+    @NotEmpty
+    private String firstName;
+    @Column(name = "last_name")
+    @NotEmpty
+    private String lastName;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"), inverseJoinColumns = @JoinColumn(name = "specialty_id"))
@@ -58,6 +62,7 @@ public class Vet extends Person {
         this.specialties = specialties;
     }
 
+    @Override
     public List<Specialty> getSpecialties() {
         List<Specialty> sortedSpecs = new ArrayList<>(getSpecialtiesInternal());
         PropertyComparator.sort(sortedSpecs, new MutableSortDefinition("name", true, true));
@@ -72,4 +77,33 @@ public class Vet extends Person {
         getSpecialtiesInternal().add(specialty);
     }
 
+    @Override
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Override
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public boolean isNew() {
+        return this.id == null;
+    }
 }
