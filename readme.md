@@ -18,7 +18,8 @@ The following items should be installed in your system:
 
 1. **Clone the repository**
    ```
-   git clone https://github.com/gregorriegler/monolithic-petclinic.git
+   git clone https://github.com/tsvetan2/monolithic-petclinic-group3.git
+
    ```
 2. **Import into Eclipse or STS**
    ```
@@ -48,3 +49,10 @@ Petclinic uses an in-memory database (HSQLDB) which gets populated at startup wi
 ## License
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](LICENSE)
+
+## Contributions
+
+Andrei Tofan
+Tsvetan Tsvetkov
+
+
