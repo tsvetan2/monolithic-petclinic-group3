@@ -1,13 +1,9 @@
-package org.springframework.samples.petclinic.vets;
+package petclinic.vets;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 public class VetService {
